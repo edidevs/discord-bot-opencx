@@ -1,0 +1,31 @@
+# .gitignore
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# PM2 logs and process files
+pm2.log
+pm2.pid
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+.DS_Store
+
+# Build files
+dist/
+build/
+
+# Miscellaneous
+*.bak
+*.swp
+

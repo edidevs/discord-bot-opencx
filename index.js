@@ -24,7 +24,7 @@ const client = new Client({
 // OpenCX API Configuration
 const OPEN_CX_API_BASE_URL = 'https://api.open.cx';
 const OPEN_CX_API_KEY = process.env.OPEN_CX_API_KEY;
-
+const CHANNEL_ID = process.env.CHANNEL_ID;
 
 // Function to create a contact
 async function createContact(email) {
@@ -104,7 +104,7 @@ client.once('ready', async () => {
     console.log(`✅ Logged in as ${client.user.tag}!`);
 
     // Send the support message to a specific channel
-    const channelId = '1310969905910386788'; // Replace with actual Discord channel ID
+    const channelId = CHANNEL_ID; // Replace with actual Discord channel ID
     const channel = await client.channels.fetch(channelId);
 
     if (channel) {

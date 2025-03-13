@@ -26,7 +26,7 @@ async function sendEmail(toEmail, subject, body) {
                     to_email: toEmail,
                     email_subject: subject,
                     email_body: body,
-                    // email_sender_name: 'Your Name or Company',
+                    // email_sender_name: 'Name or Company',
                     email_is_transactional: true
                 }
             ]
@@ -49,7 +49,7 @@ client.once('ready', async () => {
     console.log(`✅ Logged in as ${client.user.tag}!`);
 
     // Send the support message to a specific channel
-    const channelId = '1310971036526706772'; // Replace with your actual Discord channel ID
+    const channelId = '1310971036526706772'; // Replace with actual Discord channel ID
     const channel = await client.channels.fetch(channelId);
 
     if (channel) {

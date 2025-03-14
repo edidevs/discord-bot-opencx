@@ -51,11 +51,11 @@ async function createContact(email) {
 }
 
 // Function to create a chat session
-async function createChatSession() {
+async function createChatSession(contact_id) {
     try {
-        
+        console.log("CONTACT ID INSIDE CREATE CHAT SESSION", contact_id);
         const response = await axios.post(`${OPEN_CX_API_BASE_URL}/chat/sessions`, {
-            //contact_id: contact_id,
+            contact_id: contact_id,
             channel: {
                 type:"email"
             }
@@ -65,6 +65,8 @@ async function createChatSession() {
                 'Content-Type': 'application/json',
             },
         });
+
+        console.log("RESPONSE CREATE CHAT SESSION", response);
 
         return response.data.id; // Extract session ID correctly
     } catch (error) {
@@ -110,7 +112,7 @@ client.once('ready', async () => {
     if (channel) {
         // Create an embedded message
         const embed = {
-            color: 0xFF5733, // Red/Orange border
+            color: 0xffe75e, // Red/Orange border
             title: '**Need urgent support?**',
             description: '💬 **Our customer support team is available 24/7 to assist you.**\n\n' +
                          '👇 **Click the button below to start a chat with our team!** 👇',
@@ -183,12 +185,12 @@ client.on('interactionCreate', async (interaction) => {
         await interaction.deferReply({ ephemeral: true });
 
         // Get contact id 
-        // const contact_id = await createContact(email); I will disable first 
+        const contact_id = await createContact(email); 
 
        
 
         // Create chat session
-        const sessionId = await createChatSession();
+        const sessionId = await createChatSession(contact_id);
 
         // Send chat message with email
         await sendChatMessage(sessionId, message, email);

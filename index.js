@@ -53,7 +53,7 @@ async function createContact(email) {
 // Function to create a chat session
 async function createChatSession(contact_id) {
     try {
-        console.log("CONTACT ID INSIDE CREATE CHAT SESSION", contact_id);
+        // console.log("CONTACT ID INSIDE CREATE CHAT SESSION", contact_id);
         const response = await axios.post(`${OPEN_CX_API_BASE_URL}/chat/sessions`, {
             contact_id: contact_id,
             channel: {
@@ -66,7 +66,7 @@ async function createChatSession(contact_id) {
             },
         });
 
-        console.log("RESPONSE CREATE CHAT SESSION", response);
+        // console.log("RESPONSE CREATE CHAT SESSION", response);
 
         return response.data.id; // Extract session ID correctly
     } catch (error) {
